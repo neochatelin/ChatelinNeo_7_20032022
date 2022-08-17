@@ -1,0 +1,9 @@
+@import url('./layouts/Chat.scss');
+
+header{
+    display: flex;
+    position: sticky;
+    width: 80px;
+    top: 10px;
+    margin-left: auto;
+}
