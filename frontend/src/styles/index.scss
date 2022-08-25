@@ -2,15 +2,6 @@
 
 *{
   margin: 0;
-  scrollbar-color: #FD2D01;
-  scrollbar-width: 6px;
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #FD2D01;
-    border-radius: 15px;
-  }
 }
 html{
   max-height: 100%;
@@ -22,29 +13,38 @@ html{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: whitesmoke;
-    #root, .App, .main{
+    #root, .main{
       width: 100%;
       height: 100vh;
     }
   }
 }
 
-.default_profile_picture{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FD2D01;
-  color: white;
-  width: 50px;
-  height: 50px;
-  padding: 10px;
+.profile_picture {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  font-size: 40px;
+
+  &.default {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #FD2D01;
+    color: white;
+    font-size: 25px;
+    & p { padding-bottom: 3px; }
+  }
+  
+  img {
+    object-fit: cover;
+  }
 }
-.profile_picture{
-  width: 68px;
-  height: 68px;
-  border: 1px solid grey;
-  border-radius: 50%;
-  object-fit: cover;
+
+.dashboard_profile {
+  .profile_picture {
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+  }
 }

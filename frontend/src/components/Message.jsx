@@ -14,20 +14,27 @@ const Message = ({value}) => {
             display: 'flex',
             flexDirection: 'column',
             margin: '0 15px 0 15px',
-            width: 'fit-content'
+            maxWidth: 'fit-content',
+            marginBottom: '40px'
         },
-        name:{
-            display: 'flex',
-            alignItems: 'baseline',
+        name :{
+            display: "flex",
+            width : '100%',
+            alignItems: 'center',
+            marginBottom: '5px',
+            gap : '5px',
             id: {
                 color: 'rgb(105, 105, 105)',
                 fontSize: '9px'
+            },
+            label: {
+                color : "black"
             },
             marginLeft: '15px',
             fontWeight: 'bolder',
         },
         date:{
-            display: 'flex',
+            display: 'inline',
             marginLeft: '15px',
             fontSize: '13px',
             color: 'rgb(105, 105, 105)',
@@ -43,15 +50,19 @@ const Message = ({value}) => {
                 maxWidth: '300px'
             }
         },likeLabel:{
-            display: 'flex',
+            display: 'inline-flex',
             with: '15px',
             height: '15px',
             margin: '5px',
             img:{
-                transform: 'rotate(180deg)'
+                width: '15px',
+                transform: 'rotate(-180deg)',
+                transition: 'transform 0.2s ease-in-out',
             },
             img2:{
-                transform: 'rotate(0deg)'
+                width: '15px',
+                transform: 'rotate(0deg)',
+                transition: 'transform 0.2s ease-in-out',
             }
         },like:{
             display: 'none',
@@ -72,9 +83,10 @@ const Message = ({value}) => {
 
     return (
         <div className='message' style={style.message}>
-            <div>
-                <p style={style.name}><DefaultProfilePicture user={{name: value.user_name, url_picture : value.url_picture}} />{value.user_name}<span style={style.name.id}>#{value.user_id}</span></p>
-                <p style={style.date}>{date.getDay()}/{date.getMonth()}/{date.getFullYear()} à {date.getHours()}:{date.getMinutes()}</p>
+            <div style={style.name}>
+                <DefaultProfilePicture user={{name: value.user_name, url_picture : value.url_picture}} />
+                <span style={style.name.label}>{value.user_name}</span>
+                <span style={style.name.id}>{`#${value.user_id}`}</span>
             </div>
             <div style={style.content}>
                 {value.content}
@@ -94,6 +106,7 @@ const Message = ({value}) => {
                         <button id='delete' style={style.like}/>
                     </> :
                 <></>}
+                <span style={style.date}>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()} à ${date.getHours()}:${date.getMinutes()}`}</span>
             </div>
         </div>
     );

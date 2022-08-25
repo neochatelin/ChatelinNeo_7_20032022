@@ -9,9 +9,9 @@ const DefaultProfilePicture = (props) => {
         );
     }else{
         return(
-            <div className='default_profile_picture'>
+            <span className='default profile_picture'>
                 <p>{user.name[0].toUpperCase()}</p>
-            </div>
+            </span>
         )
     }
 };

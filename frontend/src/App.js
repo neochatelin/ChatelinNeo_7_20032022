@@ -8,7 +8,7 @@ import DashBoard from './pages/DashBoard';
 function App() {
   
   return (
-    <div className="App">
+    <>
       <DataProvider>
         <BrowserRouter>
             <Routes>
@@ -20,7 +20,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </DataProvider>
-    </div>
+    </>
   );
 }
 

@@ -38,7 +38,7 @@ const DashBoard = () => {
     return (
         <div className='user'>
             <p className='goBack' onClick={()=>{window.location.href = window.location.origin+'/';}}><img src='./asset/icon-arrow.svg' alt='goBack'/></p>
-            <div className='user_container'>
+            <div className='user_container dashboard_profile'>
                 <label htmlFor="image"><DefaultProfilePicture user={{...profileUser}}/></label>
                 <input type='file' id='image' style={{display: 'none'}} onChange={(e)=>{updateUserProfilePicture(e)}}></input>
                 <p className='button' onClick={()=>{Deconnection();}}>déconnexion</p>
