@@ -98,9 +98,9 @@ exports.deleteUser = (req, res, next)=>{
     const userToDeleteId = req.params.id;
     const isAdmin = req.isAdmin;
 
-    if (connectedUser !== userToDeleteId && !isAdmin)
+    if (''+connectedUser !== userToDeleteId && !isAdmin)
         return res.status(300).json({"error": "not allowed"});
-    if (connection.isAdmin(userToDeleteId) && connectedUser !== userToDeleteId)
+    if (connection.isAdmin(userToDeleteId) && ''+connectedUser !== userToDeleteId)
         return res.status(300).json({"error": "not allowed to delete administrator account"});
     
     const query = "DELETE FROM `user` WHERE id = "+userToDeleteId+";";
