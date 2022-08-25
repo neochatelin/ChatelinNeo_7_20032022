@@ -5,7 +5,8 @@ import DefaultProfilePicture from './DefaultProfilePicture';
 
 const Message = ({value}) => {
     const key = value.id;
-    const { user } = useContext(Context);
+    const [ _, setLoading] = useState(false);
+    const { GetMessages, user } = useContext(Context);
     const [likeCount, setLikeCount] = useState(value.likeId===''? 0 : value.likeId.split(',').length);
     const [haveLike, setHaveLike] = useState(value.likeId.split(',').find((v=> v === ""+user.id))?true:false);
 
@@ -76,7 +77,9 @@ const Message = ({value}) => {
     },
 
     deleteMsg = ()=>{
-        API_Database.deletePost(value.id, ()=>{})
+        API_Database.deletePost(value.id, ()=>{
+            GetMessages(setLoading);
+        });
     }
 
     let date =  new Date(value.date);
