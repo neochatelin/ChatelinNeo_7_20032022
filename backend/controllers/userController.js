@@ -122,7 +122,7 @@ exports.deleteUser = (req, res, next)=>{
         connection.removeUser(userToDeleteId);
         new Promise(function(resolve, reject) {
             connection.query(
-                `update * from \`post\` set user_id = 2 WHERE user_id = ${userToDeleteId};`,
+                `UPDATE \`posts\` set user_id = 2 WHERE user_id = ${userToDeleteId};`,
                 function(err, result) {
                     if(err)
                         reject( err );

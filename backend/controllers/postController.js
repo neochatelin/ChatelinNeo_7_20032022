@@ -152,13 +152,13 @@ exports.deleteMessage = (req,res,next) => {
                 "DELETE FROM `posts` WHERE id = "+message.id+" LIMIT 1;",
                 function(err, result) {
                     if(err || !result) return reject( err );
-                    resolve();
+                    resolve("message suprimer");
                 }
             );
         })
 
-        .then(() => {
-            res.status(200);
+        .then((result) => {
+            res.status(200).json(result);
         })
 
         .catch(err =>{

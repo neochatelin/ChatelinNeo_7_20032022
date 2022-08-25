@@ -18,24 +18,23 @@ const connection = {
     userList:new Map(),
     adminList:new Set(),
     isAdmin:(id)=> {return connection.adminList.has(id);},
-    removeUser:(id) => {
-        userList.delete(id);
-        adminList.delete(id);
-    },
     refresh: ()=> {
         connection.query("select * from `user`", function(err, result){
             if(err)
                 throw err;
-            connection.userList.clear();
-            connection.adminList.clear();
+                connection.userList.clear();
+                connection.adminList.clear();
             result.map(i=>{
                 connection.userList.set(i.id, i);
                 if(i.isAdmin)
-                    connection.adminList.add(i.id);
+                connection.adminList.add(i.id);
             })
         });
     },
-    
+    removeUser:(id) => {
+        connection.userList.delete(parseInt(id));
+        connection.adminList.delete(parseInt(id));
+    }
 }
 
 connection.refresh();
